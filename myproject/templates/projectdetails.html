@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+<!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+{% if messages %}
+  {% for category, message in messages %}
+    <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+
+<form class="form-group" method="POST", enctype="multipart/form-data">
+    {{form.hidden_tag()}}
+    <div class="form-group">
+        {{form.project_name.label(class='form-control-label')}}
+        {{form.project_name(class="form-control form-control")}}<br>
+        <p><i><b> ⚠️ Desclaimer! </b> Please do not include spaces in your project name, use a underscore '_' instead. </i></p> 
+    </div>
+    <div class="form-group">
+        {{form.description.label(class='form-control-label')}}
+        {{form.description(class='form-control form-control', placeholder="Description")}}<br>
+    </div>
+    <div class="form-group">
+        <div class='custom-file'>
+            {{form.upload_file.label(class='form-control-label')}}
+            {{form.upload_file(class="form-control form-control", accept="video/*")}}<br>
+        </div>
+    </div>
+    <div class="form-group">
+        {{form.select_gpu.label(class='form-control-label')}}
+        {% for subfield in form.select_gpu %}
+            <tr>
+                <td> {{ subfield(class="form-control form-control")}} </td>
+                <td> {{ subfield.label(class='form-control-label') }}</td>
+            </tr>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        {{form.compute_hrs.label(class='form-control-label')}}
+        {# {{form.compute_hrs(class='range', min=0, max=50, default=10, oninput="outputUpdate(value)")}} #}
+        {{form.compute_hrs(type='range', class='slider', id='myRange', min=1, max=50, value=10)}}
+        <p>Value: <span id="demo"></span></p>
+        <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+    </div>
+    {# <h3> Here are some questions we would like for you to answer - </h3><br>
+    <div class="form-group">
+        {{form.q1.label(class='form-control-label')}}<br>
+        {{form.q1(class='form-control form-control', placeholder="Description")}}<br>
+    </div>
+    <div class="form-group">
+        {{form.q2.label(class='form-control-label')}}<br>
+        {{form.q2(class='form-control form-control', placeholder="Description")}}<br>
+    </div>
+    <div class="form-group">
+        {{form.q3.label(class='form-control-label')}}
+        {% for subfield in form.q3 %}
+            <tr>
+                <td> {{ subfield(class="form-control form-control")}} </td>
+                <td> {{ subfield.label(class='form-control-label') }}</td>
+            </tr>
+        {% endfor %}
+    </div> #}
+    <div class="form-group">
+        {{form.start_training(class="btn btn-outline-info")}}
+    </div> 
+
+
+  </form>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+<!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+{% if messages %}
+  {% for category, message in messages %}
+    <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+
+  <div class='container'>
+    <div class="row">
+      <div class="col">
+        <h1> Projects </h1>
+          {% for project in projects.items %}
+          <br>
+            <div class="card">
+              <div class="card-body">
+                <h2> Project Title: <a class="card-title" href="{{ url_for('name_upload.show_project_details', project_id=project.id) }}">{{ project.project_name }}</a></h2>
+                <p class="text-muted d-block">Created on: {{ project.date.strftime('%a, %d %b %Y') }}</p> {# %H:%M:%S #}
+              </div>
+            </div>
+            {% endfor %}
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {% for page_num in projects.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+         {# {% if projects.pages == page_num %}
+         <li class="page-item disabled">
+           <a class="page-link" href="{{ url_for('users.old_projects', page=page_num) }}">{{ page_num }}</a></li>
+         </li> 
+         {% else %} #}
+           <li class="page-item"><a class="page-link" href="{{ url_for('users.old_projects', page=page_num) }}">{{ page_num }}</a></li>
+        {# {% endif %} #}
+     {% endfor %}
+   </nav>
+
+{% endblock %}

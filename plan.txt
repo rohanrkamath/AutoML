@@ -1,0 +1,66 @@
+View projects plan - 
+
+When project is submitted :-
+Make a card on the Dashboard.html to show project
+
+Video details - 
+1. Video name
+2. Video format
+3. Video Size 
+
+View old projects done. 
+
+Dashboard plan - 
+
+Username
+Company
+Email
+Phone no
+
+Work - 
+1. Stop training
+2. Updates of training
+3. Folder structure on registering
+
+Things to do - 
+Delete project function - done
+File struction - done
+Find a way to stop worker running in the background - done
+
+Prabhanjan - create a stop function only - Done
+
+Deletion of project - questions - 
+1. Should we keep a copy of projects details even after the user deletes in another table? - not required
+2. Should we store the video of the user? - not required
+
+
+Find a way to stop worker running in the background - 
+1. Store job Id in a database - Done
+2. Table columns - ID, time, project id, job id - Done
+3. Make a table in models.py called jobs - Done
+
+Display status of the job -
+Add status to the /view_project route -Done
+Make table to store for create/update state - Done
+
+Ask - 
+Information on the front-end - 
+    1. Rules/guide
+    2. Information
+
+    Slides - (presentation)
+    what did 
+    tools
+    challenges
+
+
+
+
+
+
+
+
+
+
+
+

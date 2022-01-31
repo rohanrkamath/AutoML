@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class='container'>
+  <div class="row">
+    <div class="col">
+        <h1 class="text-center font-weight-bold text-capitalize"><u>{{ project.project_name }}</u></h1>
+        <h6 class="text-center">Status: <mark>{{ job.status }}</mark></h6>
+        <br>
+        <div class="card">
+          <div class="card-body">
+            <h3> Project Details: </h3>
+            <br>
+            <h6> Project Title: {{ project.project_name }} </h6>
+            <h6> Project Description: {{ project.description }} </h5>
+            <h6> Project Date: {{ project.date.strftime('%a, %d %b %Y')}} </h6>
+          </div>  
+        
+          <div class="card-body">
+            <h3> Video Upload Details: </h3>
+            <br>
+            <h6> Video Name: {{ project.video_name }} </h6>
+            <h6> Video Format: {{ project.video_format }} </h5>
+            <h6> Video Size: {{ project.video_size }} </h6>
+          </div>  
+              
+          <div class="card-body">
+            <h3> Configurations: </h3>
+            <br>
+            <h6> Selected GPU: {{ project.select_gpu }} </h6>
+            <h6> Selected compute time: {{ project.compute_hrs }}</h6>
+            <br>
+            <div class="float-right">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#stop_modal">Stop Training</button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del_modal">Delete Project</button>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div> 
+
+  <div class="modal fade" id="stop_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+  
+          <h5 class="modal-title" id="myModalLabel"> Stop Training?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+  
+        <div class="modal-body">
+          <p>Are you sure you want to stop the training?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  
+          <form action="{{ url_for('name_upload.stop_training', project_id=project.id) }}" method="post">
+            <input class="btn btn-info" type="submit" value="Stop Training">
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Modal -->
+  <div class="modal fade" id="del_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+  
+          <h5 class="modal-title" id="myModalLabel">Delete Project?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+  
+        <div class="modal-body">
+          <p>Are you sure you want to delete the project?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  
+          <form action="{{ url_for('name_upload.delete_project', project_id=project.id) }}" method="post">
+            <input class="btn btn-danger" type="submit" value="Delete Project">
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div> 
+
+{% endblock %}
