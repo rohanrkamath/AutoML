@@ -1,6 +1,6 @@
 # AutoML Tool
 
-AutoML is an AI tool having wide spread implementations in manufacturing and security. This tool has been deployed and is in production. 
+AutoML is an AI tool having wide spread implementations in the manufacturing and security industry. The backend implements anomaly detection that will be used to detect defects/ false orientations of parts on a conveyor belt to identifying suspicious activities from a CCTV footage. This tool has been deployed and is in production. 
 
 ## Overview
 
