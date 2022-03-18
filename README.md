@@ -1,4 +1,6 @@
-# AutoML product
+# AutoML Tool
+
+AutoML is an AI tool having wide spread implementations in manufacturing and security. This tool has been deployed and is in production. 
 
 ## Overview
 
