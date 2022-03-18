@@ -42,5 +42,5 @@ $ redis-server
 $ rq worker --with-scheduler
 ```
 
-Here is a blog post I wrote on the [project](https://rohankamath.me/blog/posts/asquared-iot-experience.html)
+Here is a blog post I wrote on the [project](https://rohankamath.me/blog/posts/asquared-iot-experience.html).
 
