@@ -29,7 +29,7 @@ The app was built using the Flask web framework and its suite of packages for ha
 - `migrations/*` - All the changed done in the schema files were to be changed/migrated to the DB.
 - `myproject/*` - The source-code; Project code resides, i.e the templates, views, schema, etc
 - `backend/*` - Company provided Manufacturing AI backend was being exported to the app.
-- `user_profiles` - Auto-generated users during sign-up and projects created were stored in this directory. 
+- `user_profiles/*` - Auto-generated users during sign-up and projects created were stored in this directory. 
 
 ## Run the project locally
 
